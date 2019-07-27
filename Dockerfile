@@ -17,7 +17,7 @@ ADD book-flight-module.xml 				book-flight-module.xml
 ADD search-module.xml					search-module.xml
 
 #Add health check script
-ADD healthcheck1.sh 						healthcheck1.sh
+ADD healthcheck.sh 						healthcheck.sh
 
 #   Parameters
 #	- BROWSER
@@ -25,4 +25,4 @@ ADD healthcheck1.sh 						healthcheck1.sh
 #   - MODULE_XML
 #This means whoever will create the container from this image, will have to pass these 3 variables
 
-ENTRYPOINT sh healthcheck1.sh
+ENTRYPOINT sh healthcheck.sh
