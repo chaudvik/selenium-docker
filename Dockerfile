@@ -1,6 +1,7 @@
 FROM openjdk:8u212-jre-alpine3.9
 
 RUN apk add curl jq
+RUN apk add dos2unix
 
 #Create workspace. We do not want to start from root directory
 WORKDIR usr/share/udemy
@@ -25,4 +26,5 @@ ADD healthcheck.sh 						healthcheck.sh
 #   - MODULE_XML
 #This means whoever will create the container from this image, will have to pass these 3 variables
 
+RUN dos2unix healthcheck.sh
 ENTRYPOINT sh healthcheck.sh
