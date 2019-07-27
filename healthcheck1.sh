@@ -6,10 +6,6 @@
 echo "Checking if hub is ready - $HUB_HOST"
 MY_VARIABLE=$( curl -s http://$HUB_HOST:4444/wd/hub/status | jq -r .value.ready )
 echo "MY_VARIABLE value is: - $MY_VARIABLE"
-while ["$MY_VARIABLE" != "true"]
-do
-    sleep 1
-done
 # start the java command
 java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* \
     -DHUB_HOST=$HUB_HOST \
