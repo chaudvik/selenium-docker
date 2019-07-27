@@ -4,7 +4,11 @@
 # BROWSER
 # MODULE
 echo "Checking if hub is ready - $HUB_HOST"
-while [ "$( curl -s http://$HUB_HOST:4444/wd/hub/status | jq -r .value.ready )" != "true" ]
+
+MY_VARIABLE=$( curl -s http://$HUB_HOST:4444/wd/hub/status | jq -r .value.ready )
+echo "MY_VARIABLE value is: - $MY_VARIABLE"
+
+while [MY_VARIABLE != "true"]
 do
     sleep 1
 done
