@@ -19,7 +19,7 @@ pipeline {
                 echo "-------------------------------Pushing Image-----------------------------------"
                 withCredentials([usernamePassword(credentialsId:'dockerhubid', passwordVariable: 'pass', usernameVariable: 'user')]){
                     bat "docker login --username=${user} --password=${pass}"
-                    bat "docker push vikrantdocker9/vikrants-selenium-docker:latest"
+                    bat "docker push vikrantdocker9/vicky-selenium-docker:latest"
                 }
             }
         }
