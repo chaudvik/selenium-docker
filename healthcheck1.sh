@@ -3,7 +3,6 @@
 # HUB_HOST
 # BROWSER
 # MODULE
-
 echo "Checking if hub is ready - $HUB_HOST"
 # start the java command
 java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* \
