@@ -8,6 +8,6 @@ MY_VARIABLE=$( curl -s http://$HUB_HOST:4444/wd/hub/status | jq -r .value.ready 
 echo "MY_VARIABLE value is: - $MY_VARIABLE"
 # start the java command
 java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* \
-    -DHUB_HOST=$HUB_HOST \
-    -DBROWSER=$BROWSER \
+    -DHUB_HOST=hub \
+    -DBROWSER=chrome \
     org.testng.TestNG $MODULE
