@@ -1,0 +1,27 @@
+pipeline {
+    //Ensure that master executor is set to 0
+    //Assumption is that whichever machine the job is going to get executed, has maven and docker installed
+    //Hence, we are not adding image section here unlike we did for linus jenkinsfile
+    agent any
+    stages {
+        stage('Build Jar') {
+            steps {
+                bat 'mvn clean package -DskipTests'
+            }
+        }
+        stage('Build Image') {
+            steps {
+                bat "docker build -t=vikrantdocker9/vikrants-selenium-docker ."
+            }
+        }
+        stage('Push Image') {
+            steps {
+                echo "-------------------------------Pushing Image-----------------------------------"
+                withCredentials([usernamePassword(credentialsId:'dockerhubid', passwordVariable: 'pass', usernameVariable: 'user')]){
+                    bat "docker login --username=${user} --password=${pass}"
+                    bat "docker push vikrantdocker9/vikrants-selenium-docker:latest"
+                }
+            }
+        }
+    }
+}
